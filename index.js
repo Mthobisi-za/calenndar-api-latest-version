@@ -34,10 +34,8 @@ app.get('/', (req, res) => {
             res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify({ list }));
         });
-
-
     })();
-
+    res.send('<h1>yesss</h1>')
 });
 
 app.get('/update/:name/:surname/:email/:company_name/:e_name_surname/:occupation/:date_booked', (req, res) => {
