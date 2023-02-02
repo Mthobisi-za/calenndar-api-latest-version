@@ -1,7 +1,7 @@
 const express = require('express');
 var bodyParser = require('body-parser');
 const app = express();
-
+var cors = require('cors')
 const port = process.env.PORT || 5000;
 // firebase
 const { initializeApp } = require("firebase/app");
@@ -20,7 +20,8 @@ const firebaseConfig = {
 const appdb = initializeApp(firebaseConfig);
 const db = getFirestore(appdb);
 // firebase
-
+app.use(cors({ origin: "*" }));
+// app.options('*', cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
