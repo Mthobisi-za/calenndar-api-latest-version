@@ -31,8 +31,8 @@ app.get('/', (req, res) => {
             resp.forEach(doc => {
                 list.push(doc.data());
             });
-            res.setHeader('Content-Type', 'application/json');
-            res.end(JSON.stringify({ list }));
+
+            res.json({ list });
         });
     })();
     res.send('<h1>yesss</h1>')
