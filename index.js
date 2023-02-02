@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
             res.json({ list });
         });
     })();
-    res.send('<h1>yesss</h1>')
+
 });
 
 app.get('/update/:name/:surname/:email/:company_name/:e_name_surname/:occupation/:date_booked', (req, res) => {
