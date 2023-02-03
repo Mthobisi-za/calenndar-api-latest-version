@@ -42,7 +42,7 @@ app.get('/:name/:surname', (req, res) => {
     var name = req.params.name;
     var surname = req.params.surname;
     (async() => {
-        await getDocs(collection(db, "talent")).then(resp => {
+        await getDocs(collection(db, "approved")).then(resp => {
             var list = [];
             resp.forEach(doc => {
                 if (doc.data().talent.length == 1) {
