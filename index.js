@@ -42,8 +42,8 @@ app.get('/:name/:surname', (req, res) => {
     var name = req.params.name;
     var surname = req.params.surname;
     (async() => {
-        await getDocs(collection(db, "approved")).then(resp => {
-            var list = [];
+        var list = [];
+        await getDocs(collection(db, "talent")).then(resp => {
             resp.forEach(doc => {
                 if (doc.data().talent.length == 1) {
                     if (doc.data().talent[0].name == name && doc.data().talent[0].surname) {
@@ -61,12 +61,33 @@ app.get('/:name/:surname', (req, res) => {
 
                 }
 
+            });
 
+
+        });
+        await getDocs(collection(db, "approved")).then(resp => {
+            resp.forEach(doc => {
+                if (doc.data().talent.length == 1) {
+                    if (doc.data().talent[0].name == name && doc.data().talent[0].surname) {
+                        list.push(doc.data().talent[0]);
+                        console.log(doc.data());
+                    }
+                } else {
+                    doc.data().talent.forEach(ele => {
+                        console.log(ele);
+                        if (ele.name == name && ele.surname) {
+                            list.push(ele);
+                            console.log(ele);
+                        }
+                    });
+
+                }
 
             });
 
-            res.json({ list });
+
         });
+        res.json({ list });
     })();
 
 });
