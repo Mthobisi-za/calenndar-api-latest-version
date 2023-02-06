@@ -87,6 +87,7 @@ app.get('/:name/:surname', (req, res) => {
 
 
         });
+        console.log('list >>> ' + JSON.stringify(list))
         res.json({ list });
     })();
 
